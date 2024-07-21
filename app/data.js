@@ -1,3 +1,5 @@
+/*this is product-manage / app / data.js*/
+
 app.factory("Data", ['$http', '$location',
     function ($http, $q, $location) {
 
