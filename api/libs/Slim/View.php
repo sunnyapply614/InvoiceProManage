@@ -30,8 +30,6 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-namespace Slim;
-
 /**
  * View
  *
@@ -47,6 +45,9 @@ namespace Slim;
  * @author  Josh Lockhart
  * @since   1.0.0
  */
+
+namespace Slim;
+
 class View
 {
     /**
@@ -139,10 +140,6 @@ class View
         $this->data->clear();
     }
 
-    /********************************************************************************
-     * Legacy data methods
-     *******************************************************************************/
-
     /**
      * DEPRECATION WARNING! This method will be removed in the next major point release
      *
@@ -157,11 +154,6 @@ class View
         }
     }
 
-    /**
-     * DEPRECATION WARNING! This method will be removed in the next major point release
-     *
-     * Set data for view
-     */
     public function setData()
     {
         $args = func_get_args();
@@ -230,13 +222,6 @@ class View
      * Rendering
      *******************************************************************************/
 
-    /**
-     * Display template
-     *
-     * This method echoes the rendered template to the current output buffer
-     *
-     * @param  string   $template   Pathname of template file relative to templates directory
-     */
     public function display($template)
     {
         echo $this->fetch($template);
