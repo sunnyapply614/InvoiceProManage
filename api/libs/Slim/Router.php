@@ -2,15 +2,7 @@
 
 namespace Slim;
 
-/**
- * Router
- *
- * This class organizes, iterates, and dispatches \Slim\Route objects.
- *
- * @package Slim
- * @author  Josh Lockhart
- * @since   1.0.0
- */class Router
+class Router
 {
     /**
      * @var Route The current route (most recently dispatched)
@@ -116,12 +108,7 @@ namespace Slim;
         return array($pattern, $middleware);
     }
 
-    /**
-     * Add a route group to the array
-     * @param  string     $group      The group pattern (ie. "/books/:id")
-     * @param  array|null $middleware Optional parameter array of middleware
-     * @return int        The index of the new group
-     */
+ 
     public function pushGroup($group, $middleware = array())
     {
         return array_push($this->routeGroups, array($group => $middleware));
@@ -178,11 +165,7 @@ namespace Slim;
         return isset($this->namedRoutes[(string) $name]);
     }
 
-    /**
-     * Get named route
-     * @param  string           $name
-     * @return \Slim\Route|null
-     */
+
     public function getNamedRoute($name)
     {
         $this->getNamedRoutes();
