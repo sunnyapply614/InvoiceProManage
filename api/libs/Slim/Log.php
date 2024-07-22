@@ -1,63 +1,8 @@
 <?php
-/**
- * Slim - a micro PHP 5 framework
- *
- * @author      Josh Lockhart <info@slimframework.com>
- * @copyright   2011 Josh Lockhart
- * @link        http://www.slimframework.com
- * @license     http://www.slimframework.com/license
- * @version     2.3.5
- * @package     Slim
- *
- * MIT LICENSE
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 namespace Slim;
 
-/**
- * Log
- *
- * This is the primary logger for a Slim application. You may provide
- * a Log Writer in conjunction with this Log to write to various output
- * destinations (e.g. a file). This class provides this interface:
- *
- * debug( mixed $object, array $context )
- * info( mixed $object, array $context )
- * notice( mixed $object, array $context )
- * warning( mixed $object, array $context )
- * error( mixed $object, array $context )
- * critical( mixed $object, array $context )
- * alert( mixed $object, array $context )
- * emergency( mixed $object, array $context )
- * log( mixed $level, mixed $object, array $context )
- *
- * This class assumes only that your Log Writer has a public `write()` method
- * that accepts any object as its one and only argument. The Log Writer
- * class may write or send its argument anywhere: a file, STDERR,
- * a remote web API, etc. The possibilities are endless.
- *
- * @package Slim
- * @author  Josh Lockhart
- * @since   1.0.0
- */
+
 class Log
 {
     const EMERGENCY = 1;
@@ -181,45 +126,25 @@ class Log
         return $this->enabled;
     }
 
-    /**
-     * Log debug message
-     * @param  mixed       $object
-     * @param  array       $context
-     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
-     */
+
     public function debug($object, $context = array())
     {
         return $this->log(self::DEBUG, $object, $context);
     }
 
-    /**
-     * Log info message
-     * @param  mixed       $object
-     * @param  array       $context
-     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
-     */
+ 
     public function info($object, $context = array())
     {
         return $this->log(self::INFO, $object, $context);
     }
 
-    /**
-     * Log notice message
-     * @param  mixed       $object
-     * @param  array       $context
-     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
-     */
+  
     public function notice($object, $context = array())
     {
         return $this->log(self::NOTICE, $object, $context);
     }
 
-    /**
-     * Log warning message
-     * @param  mixed       $object
-     * @param  array       $context
-     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
-     */
+ 
     public function warning($object, $context = array())
     {
         return $this->log(self::WARN, $object, $context);
@@ -293,14 +218,7 @@ class Log
         return $this->log(self::EMERGENCY, $object, $context);
     }
 
-    /**
-     * Log message
-     * @param  mixed       $level
-     * @param  mixed       $object
-     * @param  array       $context
-     * @return mixed|bool What the Logger returns, or false if Logger not set or not enabled
-     * @throws \InvalidArgumentException If invalid log level
-     */
+
     public function log($level, $object, $context = array())
     {
         if (!isset(self::$levels[$level])) {
