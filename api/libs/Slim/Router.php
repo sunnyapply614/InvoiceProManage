@@ -1,35 +1,5 @@
 <?php
-/**
- * Slim - a micro PHP 5 framework
- *
- * @author      Josh Lockhart <info@slimframework.com>
- * @copyright   2011 Josh Lockhart
- * @link        http://www.slimframework.com
- * @license     http://www.slimframework.com/license
- * @version     2.3.5
- * @package     Slim
- *
- * MIT LICENSE
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 namespace Slim;
 
 /**
@@ -40,8 +10,7 @@ namespace Slim;
  * @package Slim
  * @author  Josh Lockhart
  * @since   1.0.0
- */
-class Router
+ */class Router
 {
     /**
      * @var Route The current route (most recently dispatched)
@@ -94,14 +63,7 @@ class Router
         return null;
     }
 
-    /**
-     * Return route objects that match the given HTTP method and URI
-     * @param  string               $httpMethod   The HTTP method to match against
-     * @param  string               $resourceUri  The resource URI to match against
-     * @param  bool                 $reload       Should matching routes be re-parsed?
-     * @return array[\Slim\Route]
-     */
-    public function getMatchedRoutes($httpMethod, $resourceUri, $reload = false)
+      public function getMatchedRoutes($httpMethod, $resourceUri, $reload = false)
     {
         if ($reload || is_null($this->matchedRoutes)) {
             $this->matchedRoutes = array();
@@ -174,13 +136,7 @@ class Router
         return (array_pop($this->routeGroups) !== null);
     }
 
-    /**
-     * Get URL for named route
-     * @param  string               $name   The name of the route
-     * @param  array                $params Associative array of URL parameter names and replacement values
-     * @throws \RuntimeException            If named route not found
-     * @return string                       The URL for the given route populated with provided replacement values
-     */
+
     public function urlFor($name, $params = array())
     {
         if (!$this->hasNamedRoute($name)) {
