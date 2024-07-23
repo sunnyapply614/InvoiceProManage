@@ -4,10 +4,7 @@ namespace Slim\Http;
 
 class Cookies extends \Slim\Helper\Set
 {
-    /**
-     * Default cookie settings
-     * @var array
-     */
+
     protected $defaults = array(
         'value' => '',
         'domain' => null,
