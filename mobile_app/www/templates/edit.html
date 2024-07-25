@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Editing: {{product.name}}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeEdit()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="finishEdit(product)">
+       <label class="item item-input" name="name">
+                <span class="input-label">Name</span>
+                <input ng-model="product.name" type="text" placeholder="Product Name">
+            </label>
+            <label class="item">
+               <span class="input-label">Description</span>
+               <textarea style="width:100%;" rows="7" ng-model="product.description" name="description" placeholder="Description..."></textarea>
+            </label>
+            <label class="item item-input" name="price">
+                <span class="input-label">Price</span>
+                <input ng-model="product.price" type="text" placeholder="Product Price">
+            </label>
+            <label class="item item-input" name="price">
+                <span class="input-label">Stock</span>
+                <input ng-model="product.stock" type="text" placeholder="Product Price">
+            </label>
+            <label class="item item-input" name="price">
+                <span class="input-label">Packing</span>
+                <input ng-model="product.packing" type="text" placeholder="Product Price">
+            </label>
+            <button class="button button-block button-positive icon-left ion-android-add">Finish Editing</button>
+    </form>
+  </ion-content>
+</ion-modal-view>

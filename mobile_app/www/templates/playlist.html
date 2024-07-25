@@ -1,0 +1,42 @@
+<ion-view view-title="Playlist">
+<ion-content>
+<div class="list card">
+	<div class="item item-avatar">
+		<h2>{{product.name}}</h2>
+		<p>{{product.created_at}}</p>
+	</div>
+	<div class="item">
+		<h3>In Stock: {{ product.stock }}</h3>
+	</div>
+	<div class="item">
+		<h3>In Price: ${{ product.price }}</h3>
+	</div>
+	<div class="item item-body">
+		<p>
+			{{product.description}}
+		</p>
+		<li class="item item-toggle">
+			Active State
+			<label class="toggle toggle-assertive">
+				<input type="checkbox">
+				<div class="track">
+					<div class="handle"></div>
+				</div>
+			</label>
+		</li>
+	</div>
+</div>
+</ion-content>
+<ion-tabs class="tabs-positive tabs-icon-only">
+
+  <ion-tab title="Edit" ng-click="edit()">
+    
+  </ion-tab>
+
+  <ion-tab title="Delete">
+    
+  </ion-tab>
+
+
+</ion-tabs>
+</ion-view>
