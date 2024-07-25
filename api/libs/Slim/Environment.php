@@ -1,53 +1,8 @@
 <?php
-/**
- * Slim - a micro PHP 5 framework
- *
- * @author      Josh Lockhart <info@slimframework.com>
- * @copyright   2011 Josh Lockhart
- * @link        http://www.slimframework.com
- * @license     http://www.slimframework.com/license
- * @version     2.3.5
- * @package     Slim
- *
- * MIT LICENSE
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 namespace Slim;
 
-/**
- * Environment
- *
- * This class creates and returns a key/value array of common
- * environment variables for the current HTTP request.
- *
- * This is a singleton class; derived environment variables will
- * be common across multiple Slim applications.
- *
- * This class matches the Rack (Ruby) specification as closely
- * as possible. More information available below.
- *
- * @package Slim
- * @author  Josh Lockhart
- * @since   1.6.0
- */
+
 class Environment implements \ArrayAccess, \IteratorAggregate
 {
     /**
@@ -60,16 +15,6 @@ class Environment implements \ArrayAccess, \IteratorAggregate
      */
     protected static $environment;
 
-    /**
-     * Get environment instance (singleton)
-     *
-     * This creates and/or returns an environment instance (singleton)
-     * derived from $_SERVER variables. You may override the global server
-     * variables by using `\Slim\Environment::mock()` instead.
-     *
-     * @param  bool             $refresh Refresh properties using global server variables?
-     * @return \Slim\Environment
-     */
     public static function getInstance($refresh = false)
     {
         if (is_null(self::$environment) || $refresh) {
@@ -79,12 +24,6 @@ class Environment implements \ArrayAccess, \IteratorAggregate
         return self::$environment;
     }
 
-    /**
-     * Get mock environment instance
-     *
-     * @param  array       $userSettings
-     * @return \Slim\Environment
-     */
     public static function mock($userSettings = array())
     {
         $defaults = array(

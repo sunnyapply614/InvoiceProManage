@@ -93,11 +93,6 @@ class Slim
         'slim.after' => array(array())
     );
 
-    /********************************************************************************
-    * PSR-0 Autoloader
-    *
-    * Do not use if you are using Composer to autoload dependencies.
-    *******************************************************************************/
 
     /**
      * Slim PSR-0 autoloader
@@ -241,11 +236,6 @@ class Slim
         unset($this->container[$name]);
     }
 
-    /**
-     * Get application instance by name
-     * @param  string    $name The name of the Slim application
-     * @return \Slim\Slim|null
-     */
     public static function getInstance($name = 'default')
     {
         return isset(static::$apps[$name]) ? static::$apps[$name] : null;
@@ -304,25 +294,7 @@ class Slim
         );
     }
 
-    /**
-     * Configure Slim Settings
-     *
-     * This method defines application settings and acts as a setter and a getter.
-     *
-     * If only one argument is specified and that argument is a string, the value
-     * of the setting identified by the first argument will be returned, or NULL if
-     * that setting does not exist.
-     *
-     * If only one argument is specified and that argument is an associative array,
-     * the array will be merged into the existing application settings.
-     *
-     * If two arguments are provided, the first argument is the name of the setting
-     * to be created or updated, and the second argument is the setting value.
-     *
-     * @param  string|array $name  If a string, the name of the setting to set or retrieve. Else an associated array of setting names and values
-     * @param  mixed        $value If name is a string, the value of the setting identified by $name
-     * @return mixed        The value of a setting if only one argument is a string
-     */
+
     public function config($name, $value = null)
     {
         if (func_num_args() === 1) {
@@ -342,15 +314,6 @@ class Slim
     * Application Modes
     *******************************************************************************/
 
-    /**
-     * Get application mode
-     *
-     * This method determines the application mode. It first inspects the $_ENV
-     * superglobal for key `SLIM_MODE`. If that is not found, it queries
-     * the `getenv` function. Else, it uses the application `mode` setting.
-     *
-     * @return string
-     */
     public function getMode()
     {
         return $this->mode;
@@ -392,36 +355,7 @@ class Slim
     * Routing
     *******************************************************************************/
 
-    /**
-     * Add GET|POST|PUT|PATCH|DELETE route
-     *
-     * Adds a new route to the router with associated callable. This
-     * route will only be invoked when the HTTP request's method matches
-     * this route's method.
-     *
-     * ARGUMENTS:
-     *
-     * First:       string  The URL pattern (REQUIRED)
-     * In-Between:  mixed   Anything that returns TRUE for `is_callable` (OPTIONAL)
-     * Last:        mixed   Anything that returns TRUE for `is_callable` (REQUIRED)
-     *
-     * The first argument is required and must always be the
-     * route pattern (ie. '/books/:id').
-     *
-     * The last argument is required and must always be the callable object
-     * to be invoked when the route matches an HTTP request.
-     *
-     * You may also provide an unlimited number of in-between arguments;
-     * each interior argument must be callable and will be invoked in the
-     * order specified before the route's callable is invoked.
-     *
-     * USAGE:
-     *
-     * Slim::get('/foo'[, middleware, middleware, ...], callable);
-     *
-     * @param   array (See notes above)
-     * @return  \Slim\Route
-     */
+
     protected function mapRoute($args)
     {
         $pattern = array_shift($args);
@@ -519,16 +453,6 @@ class Slim
         return $this->mapRoute($args)->via(\Slim\Http\Request::METHOD_OPTIONS);
     }
 
-    /**
-     * Route Groups
-     *
-     * This method accepts a route pattern and a callback all Route
-     * declarations in the callback will be prepended by the group(s)
-     * that it is in
-     *
-     * Accepts the same parameters as a standard route so:
-     * (pattern, middleware1, middleware2, ..., $callback)
-     */
     public function group()
     {
         $args = func_get_args();
@@ -553,27 +477,6 @@ class Slim
         return $this->mapRoute($args)->via("ANY");
     }
 
-    /**
-     * Not Found Handler
-     *
-     * This method defines or invokes the application-wide Not Found handler.
-     * There are two contexts in which this method may be invoked:
-     *
-     * 1. When declaring the handler:
-     *
-     * If the $callable parameter is not null and is callable, this
-     * method will register the callable to be invoked when no
-     * routes match the current HTTP request. It WILL NOT invoke the callable.
-     *
-     * 2. When invoking the handler:
-     *
-     * If the $callable parameter is null, Slim assumes you want
-     * to invoke an already-registered handler. If the handler has been
-     * registered and is callable, it is invoked and sends a 404 HTTP Response
-     * whose body is the output of the Not Found handler.
-     *
-     * @param  mixed $callable Anything that returns true for is_callable()
-     */
     public function notFound ($callable = null)
     {
         if (is_callable($callable)) {
